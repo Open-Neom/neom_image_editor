@@ -1,4 +1,4 @@
-# neom_media_upload
+# neom_image_editor
 neom_image_editor is a specialized module within the Open Neom ecosystem dedicated to providing
 robust image editing functionalities. In its initial release, it focuses on essential image cropping capabilities,
 allowing users to precisely adjust the dimensions and aspect ratio of their images.
