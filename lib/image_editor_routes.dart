@@ -1,10 +1,10 @@
-import 'package:get/get.dart';
+import 'package:sint/sint.dart';
 
 class ImageEditorRoutes {
 
-  static final List<GetPage<dynamic>> routes = [
+  static final List<SintPage<dynamic>> routes = [
     ///TO ADD MORE PAGES WHEN IMAGE EDITION GOES MORE DETAILED
-    // GetPage(
+    // SintPage(
     //   name: AppRouteConstants.imageEditor,
     //   page: () => const ImageEditorPage(),
     //   transition: Transition.zoom,

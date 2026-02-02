@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:get/get.dart';
+import 'package:sint/sint.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:neom_commons/ui/theme/app_color.dart';
 import 'package:neom_commons/utils/constants/translations/app_translation_constants.dart';
