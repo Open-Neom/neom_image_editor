@@ -1,24 +1,59 @@
-### 1.0.0 - Initial Release & Decoupling from neom_posts / neom_media_upload
+# Changelog
 
-This marks the **initial official release (v1.0.0)** of `neom_image_editor` as a standalone, independent module within the Open Neom ecosystem. Previously, image editing functionalities (specifically cropping) were often embedded directly within content creation workflows in modules like `neom_posts`, or implicitly handled by `neom_media_upload`. This decoupling is a crucial step in formalizing the image processing layer, enhancing modularity, and strengthening Open Neom's adherence to Clean Architecture principles.
+All notable changes to neom_image_editor will be documented in this file.
 
-**Key Highlights of this Release:**
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-* **Module Decoupling & Self-Containment:**
-    * `neom_image_editor` now encapsulates all image editing logic, starting with cropping, completely separated from content creation or media selection modules.
-    * This ensures that `neom_image_editor` is a highly focused and reusable component for any image manipulation requirement across the application.
+## [1.2.0] - 2025-02-08
 
-* **Centralized Image Cropping Functionality:**
-    * Provides a dedicated and robust image cropping feature, allowing precise adjustments to image dimensions and aspect ratios.
-    * Utilizes `image_cropper` as its core external dependency, ensuring a high-quality, platform-optimized user experience for cropping.
+### Changed
+- **Improved UX**: Hidden bottom controls (Scale/Rotate) in cropper for cleaner interface on modern devices
+- **Updated README**: Complete rewrite with ambitious ROADMAP 2026 for professional-grade image editing
+- Updated `flutter_lints` to ^6.0.0
 
-* **Direct External Dependencies:**
-    * Now directly manages its external image editing dependency (`image_cropper`), centralizing its usage within this module.
+### Documentation
+- Added comprehensive ROADMAP 2026 with quarterly milestones
+- Added competitive analysis vs Snapseed, Canva, Lightroom Mobile
+- Added technical architecture goals
+- Added performance targets
 
-* **Enhanced Maintainability & Future Scalability:**
-    * As a dedicated and self-contained module, `neom_image_editor` is now significantly easier to maintain, test, and extend for future image editing features (e.g., filters, adjustments, overlays).
-    * Any module requiring image editing capabilities can simply depend on `neom_image_editor` and its `ImageEditorService`.
-    * This aligns perfectly with the overall architectural vision of Open Neom, fostering a more collaborative and efficient development environment for visual content.
+### ROADMAP 2026 Highlights
+- Q1: Basic adjustments (brightness, contrast, shadows, highlights)
+- Q2: Filters & effects engine (50+ filters, blur effects, light leaks)
+- Q3: Creative tools (text, stickers, drawing, layers)
+- Q4: AI-powered features (auto-enhance, background removal, upscaling)
 
-* **Leverages Core Open Neom Modules:**
-    * Built upon `neom_core` for foundational services and `neom_commons` for reusable UI components and utilities, ensuring consistency and seamless integration within the ecosystem.
+## [1.1.2] - Previous Release
+
+### Fixed
+- Minor bug fixes and improvements
+
+## [1.1.0] - Previous Release
+
+### Added
+- Platform-specific UI customization
+- Improved aspect ratio presets
+
+## [1.0.0] - Initial Release
+
+### Added
+
+#### Module Decoupling
+- Standalone module extracted from neom_posts and neom_media_upload
+- Self-contained image editing logic
+
+#### Core Features
+- **Image Cropping**: Precise aspect ratio control
+  - Square (1:1)
+  - Ratio 3x2
+  - Ratio 4x3
+  - Ratio 16x9
+  - Original aspect ratio
+- **Platform-Optimized UI**: Native-like cropping experience
+- **Integration with Media Pipeline**: Seamless image processing workflow
+
+#### Technical
+- Implements `ImageEditorService` interface
+- Uses `image_cropper` for native cropping
+- Built on `neom_core` and `neom_commons`

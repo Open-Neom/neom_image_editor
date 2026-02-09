@@ -1,11 +1,11 @@
 import 'dart:io';
 
-import 'package:sint/sint.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:neom_commons/ui/theme/app_color.dart';
 import 'package:neom_commons/utils/constants/translations/app_translation_constants.dart';
 import 'package:neom_core/app_config.dart';
 import 'package:neom_core/domain/use_cases/image_editor_service.dart';
+import 'package:sint/sint.dart';
 
 import '../../utils/constants/image_editor_translation_constants.dart';
 
@@ -33,6 +33,7 @@ class ImageEditorController implements ImageEditorService {
             statusBarColor: AppColor.getMain(),
             dimmedLayerColor: AppColor.main50,
             activeControlsWidgetColor: AppColor.yellow,
+            hideBottomControls: true, // Ocultar controles de Scale/Rotate para mejor UX en pantallas altas
             aspectRatioPresets: [
               CropAspectRatioPreset.square,
               CropAspectRatioPreset.ratio3x2,

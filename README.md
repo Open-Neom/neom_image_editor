@@ -1,82 +1,177 @@
-# neom_media_upload
-neom_image_editor is a specialized module within the Open Neom ecosystem dedicated to providing
-robust image editing functionalities. In its initial release, it focuses on essential image cropping capabilities,
-allowing users to precisely adjust the dimensions and aspect ratio of their images.
+# neom_image_editor
 
-This module is designed to enhance the visual quality of user-generated content
-and ensure images fit various display requirements across the platform.
+A professional-grade image editing module for Flutter applications, part of the Open Neom ecosystem. Designed to compete with industry-leading image editors like Canva, Snapseed, and Adobe Lightroom Mobile.
 
-While currently focused on cropping, neom_image_editor is built with a forward-looking architecture,
-ready for future expansion to include a wider array of image manipulation tools, filters, 
-and advanced editing features. It adheres to Open Neom's Clean Architecture principles, 
-ensuring it is highly testable, maintainable, and seamlessly integrates with neom_core 
-for core services and neom_commons for shared UI components. This module contributes to 
-the Tecnozenism vision by empowering users with tools for conscious digital expression.
+## Current Version: 1.2.0
 
-🌟 Features & Responsibilities
+## Features
 
-In its current version (v1.0.0), neom_image_editor primarily offers:
-•	Image Cropping: Provides a user-friendly interface to crop images to specific aspect ratios 
-    (e.g., square, 3x2, 4x3, 16x9, original) or custom dimensions.
-•	Platform-Optimized UI: Presents a native-like cropping experience with customizable UI settings
-    for both Android and iOS, ensuring a consistent and intuitive user interaction.
-•	Integration with Media Pipeline: Designed to receive image files from media selection modules
-    (like neom_media_upload) and return processed images for further use (e.g., uploading, displaying in neom_posts).
+### Current Capabilities (v1.2.0)
+- **Image Cropping**: Precise aspect ratio control (square, 3x2, 4x3, 16x9, original)
+- **Platform-Optimized UI**: Native-like experience on Android and iOS
+- **Improved UX**: Hidden bottom controls for cleaner interface on modern devices
+- **Integration Ready**: Seamless integration with media pipelines
 
-Future Expansion (Roadmap)
-neom_image_editor is envisioned to grow significantly, with plans to incorporate:
-•	Advanced Image Editing: Tools for brightness, contrast, saturation, and other fundamental adjustments.
-•	Filters and Effects: A library of pre-defined filters and artistic effects to enhance image aesthetics.
-•	Text and Sticker Overlays: Functionality to add text, stickers, and other graphic elements to images.
-•	Drawing Tools: Basic drawing and annotation capabilities directly on images.
-•	Integration with AI-powered Enhancements: Leveraging AI for smart enhancements,
-    background removal, or other advanced image manipulations.
+## Installation
 
-📦 Technical Highlights / Why it Matters (for developers)
-For developers, neom_image_editor serves as an excellent case study for:
-•	Specialized Feature Module Development: Demonstrates how to create a highly focused 
-    module for a specific, complex functionality (image editing).
-•	External Package Integration: Showcases effective integration of image_cropper, a powerful 
-    third-party library, and how to wrap its functionalities within a Clean Architecture service.
-•	Service-Oriented Architecture: Implements the ImageEditorService interface, illustrating how image
-    editing logic is decoupled and consumed by other modules (e.g., neom_media_upload, neom_posts)
-    without direct knowledge of its implementation details.
-•	Platform-Specific UI Customization: Provides examples of configuring platform-specific UI settings
-    for external packages to match the application's theme and user experience.
-•	Future-Proof Design: Its current minimal functionality coupled with the ImageEditorService
-    interface exemplifies how a module can be designed to easily accommodate significant
-    future expansions without requiring changes in its consumers.
+```yaml
+dependencies:
+  neom_image_editor:
+    git:
+      url: git@github.com:Open-Neom/neom_image_editor.git
+```
 
-How it Supports the Open Neom Initiative
-neom_image_editor is vital to the Open Neom ecosystem and the broader Tecnozenism vision by:
-•	Enhancing Content Quality: By providing tools for image optimization, it helps users create visually
-    appealing content, enriching the overall platform experience.
-•	Empowering Digital Expression: It gives users more control over their visual narratives,
-    aligning with the Tecnozenism principle of conscious and creative interaction with technology.
-•	Facilitating Research Visuals: Researchers can use precise cropping to prepare images for data
-    visualization or presentations, ensuring clarity and focus.
-•	Showcasing Modularity: As a self-contained module, it exemplifies Open Neom's "Plug-and-Play" architecture,
-    demonstrating how complex functionalities can be built independently and integrated seamlessly.
+## Usage
 
-🚀 Usage
-This module provides the ImageEditorService interface and its implementation (ImageEditorController).
-Other modules (e.g., neom_media_upload after image selection, neom_posts for inline editing) 
-inject and utilize ImageEditorService to perform image cropping operations.
+```dart
+import 'package:neom_image_editor/neom_image_editor.dart';
 
-🛠️ Dependencies
-neom_image_editor relies on neom_core for core services and neom_commons for reusable UI
-components and utilities. It directly depends on image_cropper for its core functionality.
+// Crop an image
+final imageEditorService = ImageEditorController();
+final croppedFile = await imageEditorService.cropImage(sourceFile);
+```
 
-🤝 Contributing
-We welcome contributions to the neom_image_editor module! If you're passionate about image processing,
-UI/UX for editing tools, or implementing new filters/effects, your contributions can significantly
-expand Open Neom's visual capabilities.
+---
 
-To understand the broader architectural context of Open Neom and how neom_image_editor fits into
-the overall vision of Tecnozenism, please refer to the main project's MANIFEST.md.
+## ROADMAP 2026: Professional Image Editor
 
-For guidance on how to contribute to Open Neom and to understand the various levels of learning and
-engagement possible within the project, consult our comprehensive guide: Learning Flutter Through Open Neom: A Comprehensive Path.
+Our vision is to transform neom_image_editor into a **world-class image editing solution** capable of competing with any professional mobile image editor.
 
-📄 License
-This project is licensed under the Apache License, Version 2.0, January 2004. See the LICENSE file for details.
+### Q1 2026: Foundation Enhancement
+
+#### Basic Adjustments
+- [ ] **Brightness & Exposure** - Full range control with real-time preview
+- [ ] **Contrast & Saturation** - HSL color space manipulation
+- [ ] **Shadows & Highlights** - Advanced tone mapping
+- [ ] **Temperature & Tint** - White balance correction
+- [ ] **Sharpness & Clarity** - Edge enhancement algorithms
+- [ ] **Vignette** - Customizable corner darkening
+
+#### Crop & Transform Enhancements
+- [ ] **Free-form Crop** - Custom aspect ratios
+- [ ] **Rotation** - Precise angle adjustment with grid overlay
+- [ ] **Perspective Correction** - Keystone adjustment
+- [ ] **Flip & Mirror** - Horizontal/vertical transformations
+
+### Q2 2026: Filters & Effects Engine
+
+#### Professional Filter System
+- [ ] **Filter Categories**: Portrait, Landscape, Urban, Vintage, Cinematic, B&W
+- [ ] **50+ Preset Filters** - Professionally designed color grading
+- [ ] **Filter Intensity Slider** - Adjustable strength (0-100%)
+- [ ] **Custom Filter Creation** - Save personal filter presets
+- [ ] **LUT Import Support** - Import .cube and .3dl files
+
+#### Effects Library
+- [ ] **Blur Effects**: Gaussian, Motion, Radial, Tilt-shift
+- [ ] **Grain & Noise** - Film simulation
+- [ ] **Light Leaks** - Artistic light overlays
+- [ ] **Bokeh** - Background blur with shape selection
+- [ ] **Glitch Effects** - Digital art effects
+- [ ] **Double Exposure** - Image blending
+
+### Q3 2026: Creative Tools
+
+#### Text & Typography
+- [ ] **Rich Text Editor** - Full formatting control
+- [ ] **100+ Font Library** - Curated typography collection
+- [ ] **Text Effects**: Shadow, outline, gradient fill
+- [ ] **Curved Text** - Text on path
+- [ ] **Text Templates** - Social media ready designs
+
+#### Stickers & Overlays
+- [ ] **Sticker Library** - 500+ categorized stickers
+- [ ] **Custom Sticker Import** - PNG with transparency
+- [ ] **Animated Stickers** - GIF and APNG support
+- [ ] **Frame Overlays** - Polaroid, vintage, modern frames
+- [ ] **Shape Overlays** - Geometric design elements
+
+#### Drawing & Annotation
+- [ ] **Brush Engine**: Pen, marker, highlighter, airbrush
+- [ ] **Brush Customization** - Size, opacity, hardness
+- [ ] **Shape Tools** - Rectangle, circle, arrow, line
+- [ ] **Color Picker** - Eyedropper from image
+- [ ] **Layers Support** - Non-destructive editing
+
+### Q4 2026: AI-Powered Features
+
+#### Intelligent Editing
+- [ ] **Auto-Enhance** - One-tap AI improvement
+- [ ] **Smart Object Selection** - AI-powered subject detection
+- [ ] **Background Removal** - Automatic background extraction
+- [ ] **Background Replacement** - AI scene generation
+- [ ] **Portrait Mode** - Depth-aware blur
+- [ ] **Sky Replacement** - Intelligent sky detection and swap
+
+#### Advanced AI Tools
+- [ ] **Face Detection & Enhancement** - Skin smoothing, blemish removal
+- [ ] **Object Removal** - Content-aware fill
+- [ ] **Image Upscaling** - AI super-resolution (2x, 4x)
+- [ ] **Style Transfer** - Apply artistic styles
+- [ ] **Colorization** - B&W to color conversion
+
+### Technical Architecture Goals
+
+```
+lib/
+├── core/
+│   ├── engine/
+│   │   ├── image_processor.dart      # GPU-accelerated processing
+│   │   ├── filter_engine.dart        # Real-time filter pipeline
+│   │   └── layer_manager.dart        # Multi-layer composition
+│   ├── ai/
+│   │   ├── segmentation_service.dart # Object/background separation
+│   │   ├── enhancement_service.dart  # Auto-enhance algorithms
+│   │   └── ml_models/                # On-device ML models
+│   └── utils/
+│       ├── color_space.dart          # RGB, HSL, LAB conversions
+│       └── histogram.dart            # Image analysis
+├── features/
+│   ├── adjustments/                  # Brightness, contrast, etc.
+│   ├── filters/                      # Filter system
+│   ├── effects/                      # Blur, grain, etc.
+│   ├── text/                         # Typography system
+│   ├── stickers/                     # Overlay system
+│   ├── drawing/                      # Brush engine
+│   └── ai_tools/                     # AI-powered features
+└── ui/
+    ├── editor_page.dart              # Main editor interface
+    ├── tools_panel.dart              # Tool selection
+    └── preview_canvas.dart           # Real-time preview
+```
+
+### Performance Targets
+- **Real-time Preview**: <16ms frame time (60 FPS)
+- **Filter Application**: <100ms for full-resolution
+- **Export Time**: <2s for 4K images
+- **Memory Usage**: <200MB peak during editing
+- **Startup Time**: <500ms cold start
+
+### Competitive Analysis
+
+| Feature | neom_image_editor (2026) | Snapseed | Canva | Lightroom Mobile |
+|---------|--------------------------|----------|-------|------------------|
+| Basic Adjustments | Full | Full | Limited | Full |
+| Filters | 50+ | 30+ | 100+ | 50+ |
+| AI Background Removal | Yes | No | Yes (Pro) | Yes |
+| Text/Typography | Full | Basic | Full | No |
+| Layers | Yes | Limited | Yes | No |
+| LUT Support | Yes | No | No | Yes |
+| Offline AI | Yes | No | No | Partial |
+| Open Source | Yes | No | No | No |
+
+---
+
+## Dependencies
+
+- `neom_core` - Core services and configuration
+- `neom_commons` - Shared UI components
+- `image_cropper` - Native image cropping
+
+## License
+
+Apache License 2.0 - see [LICENSE](LICENSE) for details.
+
+---
+
+**Open Neom** - Empowering digital expression through open-source technology.
