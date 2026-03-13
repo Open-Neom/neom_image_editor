@@ -1,6 +1,5 @@
-import 'dart:io';
-
 import 'package:image_cropper/image_cropper.dart';
+import 'package:neom_core/utils/platform/core_io.dart';
 import 'package:neom_commons/ui/theme/app_color.dart';
 import 'package:neom_commons/utils/constants/translations/app_translation_constants.dart';
 import 'package:neom_core/app_config.dart';
@@ -27,11 +26,11 @@ class ImageEditorController implements ImageEditorService {
         uiSettings: [
           AndroidUiSettings(
             toolbarTitle: ImageEditorTranslationConstants.adjustImage.tr,
-            backgroundColor: AppColor.getMain(),
+            backgroundColor: AppColor.scaffold,
             toolbarColor: AppColor.getMain(),
             toolbarWidgetColor: AppColor.white,
             statusBarColor: AppColor.getMain(),
-            dimmedLayerColor: AppColor.main50,
+            dimmedLayerColor: AppColor.surfaceCard,
             activeControlsWidgetColor: AppColor.yellow,
             hideBottomControls: true, // Ocultar controles de Scale/Rotate para mejor UX en pantallas altas
             aspectRatioPresets: [
