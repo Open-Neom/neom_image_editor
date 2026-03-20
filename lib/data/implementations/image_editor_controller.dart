@@ -3,6 +3,7 @@ import 'package:neom_core/utils/platform/core_io.dart';
 import 'package:neom_commons/ui/theme/app_color.dart';
 import 'package:neom_commons/utils/constants/translations/app_translation_constants.dart';
 import 'package:neom_core/app_config.dart';
+import 'package:neom_core/utils/neom_error_logger.dart';
 import 'package:neom_core/domain/use_cases/image_editor_service.dart';
 import 'package:sint/sint.dart';
 
@@ -66,8 +67,8 @@ class ImageEditorController implements ImageEditorService {
         AppConfig.logger.w("Cropped file is empty or null");
       }
 
-    } catch (e) {
-      AppConfig.logger.e(e.toString());
+    } catch (e, st) {
+      NeomErrorLogger.recordError(e, st, module: 'neom_image_editor', operation: 'cropImage');
     }
 
     return croppedImageFile;
