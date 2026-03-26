@@ -20,6 +20,7 @@ dependencies:
       url: git@github.com:Open-Neom/neom_commons.git
 
   image_cropper: ^9.1.0
+  crop_your_image: ^1.1.0
 
 dev_dependencies:
   flutter_test:

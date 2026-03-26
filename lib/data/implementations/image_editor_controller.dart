@@ -1,3 +1,6 @@
+import 'dart:typed_data';
+
+import 'package:flutter/widgets.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:neom_core/utils/platform/core_io.dart';
 import 'package:neom_commons/ui/theme/app_color.dart';
@@ -7,6 +10,7 @@ import 'package:neom_core/utils/neom_error_logger.dart';
 import 'package:neom_core/domain/use_cases/image_editor_service.dart';
 import 'package:sint/sint.dart';
 
+import '../../ui/web_crop_dialog.dart';
 import '../../utils/constants/image_editor_translation_constants.dart';
 
 class ImageEditorController implements ImageEditorService {
@@ -72,6 +76,17 @@ class ImageEditorController implements ImageEditorService {
     }
 
     return croppedImageFile;
+  }
+
+  @override
+  Future<Uint8List?> cropImageBytes(BuildContext context, Uint8List bytes, {double aspectRatio = 1.0}) async {
+    AppConfig.logger.d("Initializing Web Image Cropper");
+    try {
+      return await showWebCropDialog(context, bytes, aspectRatio: aspectRatio);
+    } catch (e, st) {
+      NeomErrorLogger.recordError(e, st, module: 'neom_image_editor', operation: 'cropImageBytes');
+    }
+    return null;
   }
 
 }
