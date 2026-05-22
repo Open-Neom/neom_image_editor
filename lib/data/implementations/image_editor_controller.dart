@@ -1,6 +1,7 @@
+import 'dart:async';
 import 'dart:typed_data';
 
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:neom_core/utils/platform/core_io.dart';
 import 'package:neom_commons/ui/theme/app_color.dart';
@@ -10,10 +11,14 @@ import 'package:neom_core/utils/neom_error_logger.dart';
 import 'package:neom_core/domain/use_cases/image_editor_service.dart';
 import 'package:sint/sint.dart';
 
+import '../../ui/pro_image_editor_page.dart';
 import '../../ui/web_crop_dialog.dart';
 import '../../utils/constants/image_editor_translation_constants.dart';
+import 'background_remover_controller.dart';
 
 class ImageEditorController implements ImageEditorService {
+
+  final BackgroundRemoverController _bgRemover = BackgroundRemoverController();
 
   @override
   Future<File?> cropImage(File file, {double ratioX = 1, double ratioY = 1}) async {
@@ -37,7 +42,7 @@ class ImageEditorController implements ImageEditorService {
             statusBarColor: AppColor.getMain(),
             dimmedLayerColor: AppColor.surfaceCard,
             activeControlsWidgetColor: AppColor.yellow,
-            hideBottomControls: true, // Ocultar controles de Scale/Rotate para mejor UX en pantallas altas
+            hideBottomControls: true,
             aspectRatioPresets: [
               CropAspectRatioPreset.square,
               CropAspectRatioPreset.ratio3x2,
@@ -87,6 +92,45 @@ class ImageEditorController implements ImageEditorService {
       NeomErrorLogger.recordError(e, st, module: 'neom_image_editor', operation: 'cropImageBytes');
     }
     return null;
+  }
+
+  @override
+  Future<Uint8List?> openFullEditor(BuildContext context, {Uint8List? imageBytes, String? imageUrl}) async {
+    AppConfig.logger.d("Opening Pro Image Editor");
+    try {
+      final completer = Completer<Uint8List?>();
+
+      await Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (_) => ProImageEditorPage(
+            imageBytes: imageBytes,
+            imageUrl: imageUrl,
+            onEditingComplete: (bytes) => completer.complete(bytes),
+          ),
+        ),
+      );
+
+      if (!completer.isCompleted) completer.complete(null);
+      return await completer.future;
+    } catch (e, st) {
+      NeomErrorLogger.recordError(e, st, module: 'neom_image_editor', operation: 'openFullEditor');
+    }
+    return null;
+  }
+
+  @override
+  Future<Uint8List?> removeBackground(Uint8List imageBytes) async {
+    AppConfig.logger.d("Removing image background with AI");
+    try {
+      return await _bgRemover.removeBackground(imageBytes);
+    } catch (e, st) {
+      NeomErrorLogger.recordError(e, st, module: 'neom_image_editor', operation: 'removeBackground');
+    }
+    return null;
+  }
+
+  void dispose() {
+    _bgRemover.dispose();
   }
 
 }
