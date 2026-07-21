@@ -33,21 +33,34 @@ class ProImageEditorPage extends StatelessWidget {
       },
     );
 
+    final configs = ProImageEditorConfigs(
+      imageGeneration: const ImageGenerationConfigs(
+        outputFormat: OutputFormat.jpg,
+        maxOutputSize: Size(1920, 1080),
+        processorConfigs: ProcessorConfigs(
+          processorMode: ProcessorMode.minimum,
+        ),
+      ),
+    );
+
     try {
       if (imageBytes != null) {
         return ProImageEditor.memory(
           imageBytes!,
           callbacks: callbacks,
+          configs: configs,
         );
       } else if (imageUrl != null) {
         return ProImageEditor.network(
           imageUrl!,
           callbacks: callbacks,
+          configs: configs,
         );
       } else {
         return ProImageEditor.file(
           imageFile!,
           callbacks: callbacks,
+          configs: configs,
         );
       }
     } catch (e, st) {

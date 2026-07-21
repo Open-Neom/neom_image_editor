@@ -21,7 +21,7 @@ dependencies:
 
   image_cropper: ^9.1.0
   crop_your_image: ^1.1.0
-  pro_image_editor: ^12.2.0
+  pro_image_editor: 12.4.4
   image_background_remover: ^2.0.0
 
 dev_dependencies:
